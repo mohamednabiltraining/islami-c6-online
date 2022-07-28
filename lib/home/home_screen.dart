@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:islami_c6_online/hadeth_tab.dart';
-import 'package:islami_c6_online/my_colors.dart';
-import 'package:islami_c6_online/quran_tab.dart';
-import 'package:islami_c6_online/radio_tab.dart';
-import 'package:islami_c6_online/tasbhe_tab.dart';
+import 'package:islami_c6_online/home/hadeth/hadeth_tab.dart';
+import 'package:islami_c6_online/home/quran/quran_tab.dart';
+import 'package:islami_c6_online/home/radio/radio_tab.dart';
+import 'package:islami_c6_online/home/tasbeh/tasbhe_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = 'Home';
@@ -27,34 +26,20 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       child: Scaffold(
-        backgroundColor: Colors.transparent,
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
           title: Text(
             'Islami',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 30,
-              fontWeight: FontWeight.w500,
-            ),
           ),
         ),
         bottomNavigationBar: Theme(
-          data: Theme.of(context).copyWith(canvasColor: MyColors.primaryColor),
+          data: Theme.of(context)
+              .copyWith(canvasColor: Theme.of(context).primaryColor),
           child: BottomNavigationBar(
             currentIndex: selectedIndex,
             onTap: (index) {
               selectedIndex = index;
               setState(() {});
             },
-            selectedIconTheme: IconThemeData(
-              color: Colors.black,
-            ),
-            unselectedIconTheme: IconThemeData(color: Colors.white),
-            selectedLabelStyle: TextStyle(color: Colors.black),
-            selectedItemColor: Colors.black,
-            unselectedItemColor: Colors.white,
             items: [
               BottomNavigationBarItem(
                   icon: ImageIcon(
