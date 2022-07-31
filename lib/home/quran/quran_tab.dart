@@ -133,7 +133,7 @@ class QuranTab extends StatelessWidget {
                         color: Theme.of(context).primaryColor, width: 2))),
             padding: EdgeInsets.symmetric(vertical: 12),
             child: Text(
-              'Name',
+              'اسم السورة',
               style: Theme.of(context).textTheme.headline4,
             )),
         Expanded(
