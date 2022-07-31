@@ -20,10 +20,8 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    //
     var args = ModalRoute.of(context)?.settings.arguments as SuraDetailsArgs;
     if (verses.isEmpty) readFile(args.index); // non-blocking code
-
     return Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -41,22 +39,24 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
               ? Center(child: CircularProgressIndicator())
               : Container(
                   margin: EdgeInsets.symmetric(horizontal: 12, vertical: 64),
+                  padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(24)),
                   child: ListView.separated(
-                      itemBuilder: (_, index) {
-                        return VerseWidget(index, verses[index]);
-                      },
-                      itemCount: verses.length,
-                      separatorBuilder: (_, index) {
-                        return Container(
-                          margin: EdgeInsets.symmetric(horizontal: 64),
-                          color: Theme.of(context).primaryColor,
-                          width: double.infinity,
-                          height: 2,
-                        );
-                      }),
+                    itemBuilder: (_, index) {
+                      return VerseWidget(index, verses[index]);
+                    },
+                    itemCount: verses.length,
+                    separatorBuilder: (_, index) {
+                      return Container(
+                        margin: EdgeInsets.symmetric(horizontal: 64),
+                        color: Theme.of(context).primaryColor,
+                        width: double.infinity,
+                        height: 2,
+                      );
+                    },
+                  ),
                 ),
         ));
   }
@@ -68,7 +68,6 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
     List<String> lines =
         content.split("\r\n"); // split each line a separate string
     verses = lines;
-    print(verses);
     setState(() {});
   }
 }
