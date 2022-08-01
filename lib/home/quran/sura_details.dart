@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:islami_c6_online/home/providers/settings_provider.dart';
 import 'package:islami_c6_online/home/quran/verse_widget.dart';
+import 'package:provider/provider.dart';
 
 class SuraDetailsScreen extends StatefulWidget {
   static const String routeName = 'sura-details';
@@ -23,12 +25,13 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
     //
     var args = ModalRoute.of(context)?.settings.arguments as SuraDetailsArgs;
     if (verses.isEmpty) readFile(args.index); // non-blocking code
+    var provider = Provider.of<SettingsProvider>(context);
 
     return Container(
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage(
-              'assets/images/background_pattern.png',
+              provider.getMainBackGround(),
             ),
             fit: BoxFit.fill,
           ),
@@ -42,7 +45,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
               : Container(
                   margin: EdgeInsets.symmetric(horizontal: 12, vertical: 64),
                   decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Theme.of(context).backgroundColor,
                       borderRadius: BorderRadius.circular(24)),
                   child: ListView.separated(
                       itemBuilder: (_, index) {
@@ -66,7 +69,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
     String content =
         await rootBundle.loadString('assets/files/${index + 1}.txt');
     List<String> lines =
-        content.split("\r\n"); // split each line a separate string
+        content.split("\n"); // split each line a separate string
     verses = lines;
     print(verses);
     setState(() {});

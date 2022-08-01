@@ -13,6 +13,8 @@ class VerseWidget extends StatelessWidget {
         alignment: Alignment.center,
         child: Text(
           '$content { ${index + 1} }',
+          textDirection: TextDirection.rtl,
+          textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.bodyText1,
         ));
   }
