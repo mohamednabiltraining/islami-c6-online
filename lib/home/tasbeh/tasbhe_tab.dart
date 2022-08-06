@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TasbehTab extends StatefulWidget {
   @override
@@ -8,13 +11,11 @@ class TasbehTab extends StatefulWidget {
 class _TasbehTabState extends State<TasbehTab> {
   String mydoaa = 'سبحان الله';
   int numberOfTasbe7 = 0;
-  double angle = 0.2;
+  double angle = (pi * 20) / 180;
   int i = 0;
 
   @override
   Widget build(BuildContext context) {
-    int i = 0;
-
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
@@ -29,27 +30,32 @@ class _TasbehTabState extends State<TasbehTab> {
           alignment: Alignment.center,
           child: Column(
             children: [
+              Stack(children: [
+                Positioned(
+                    top: -5,
+                    right: 50,
+                    width: 60,
+                    height: 60,
+                    child: Image(
+                        image: AssetImage('assets/images/head_seb7a.png'))),
+                Container(
+                    padding: EdgeInsets.all(35),
+                    width: 250,
+                    height: 250,
+                    child: Transform.rotate(
+                        angle: angle,
+                        child: Image(
+                            image:
+                                AssetImage('assets/images/body_seb7a.png')))),
+              ]),
               Container(
-                  alignment: Alignment.bottomRight,
-                  width: 70,
-                  height: 70,
-                  child:
-                      Image(image: AssetImage('assets/images/head_seb7a.png'))),
-              Container(
-                  width: 150,
-                  height: 150,
-                  child: Transform.rotate(
-                      angle: angle,
-                      child: Image(
-                          image: AssetImage('assets/images/body_seb7a.png')))),
-              Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                  margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                  child: Text('عدد التسبيحات',
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+                  margin: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+                  child: Text(AppLocalizations.of(context)!.number_tasbeh,
                       style: Theme.of(context).textTheme.headline4)),
               Container(
                   decoration: BoxDecoration(
-                      color: Theme.of(context).cardColor,
+                      color: Theme.of(context).primaryColor.withOpacity(0.5),
                       borderRadius: BorderRadius.circular(24)),
                   padding: EdgeInsets.symmetric(horizontal: 25, vertical: 35),
                   margin: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
@@ -61,11 +67,11 @@ class _TasbehTabState extends State<TasbehTab> {
                   },
                   style: ElevatedButton.styleFrom(
                       padding:
-                          EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                      EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                       primary: Theme.of(context).primaryColor,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(24)) // background
-                      ),
+                  ),
                   child: Text(mydoaa,
                       style: Theme.of(context).textTheme.headline3))
             ],
