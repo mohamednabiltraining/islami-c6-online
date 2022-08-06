@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_c6_online/home/hadeth/hadeth_details.dart';
 
 class HadethTab extends StatefulWidget {
@@ -26,7 +27,7 @@ class _HadethTabState extends State<HadethTab> {
                       color: Theme.of(context).primaryColor, width: 2))),
           padding: EdgeInsets.symmetric(vertical: 0),
           child: Text(
-            'الأحاديث',
+            AppLocalizations.of(context)!.ahadeth_names,
             style: Theme.of(context).textTheme.headline4,
           )),
       Expanded(

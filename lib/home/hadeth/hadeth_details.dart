@@ -30,6 +30,7 @@ class HadethDetails extends StatelessWidget {
             padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
             alignment: Alignment.topRight,
             child: Text(args.content,
+                textDirection: TextDirection.rtl,
                 style: Theme.of(context).textTheme.bodyText1)),
       ),
     );
